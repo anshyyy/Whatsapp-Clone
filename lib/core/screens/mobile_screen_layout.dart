@@ -1,4 +1,5 @@
 import 'package:whatsapp/exports.dart';
+import 'package:whatsapp/features/contacts/presentation/contact_list.dart';
 
 class MobileScreen extends StatelessWidget {
   const MobileScreen({super.key});
@@ -14,9 +15,10 @@ class MobileScreen extends StatelessWidget {
             title: const Text("WhatsApp", style: TextStyle(color: textColor)),
             actions: [
               IconButton(
-                  onPressed: () {}, icon: Icon(Icons.camera_alt_outlined)),
-              IconButton(onPressed: () {}, icon: Icon(Icons.search)),
-              IconButton(onPressed: () {}, icon: Icon(Icons.more_vert))
+                  onPressed: () {},
+                  icon: const Icon(Icons.camera_alt_outlined)),
+              IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
+              IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))
             ],
             bottom: const TabBar(
                 labelColor: tabColor,
@@ -31,6 +33,7 @@ class MobileScreen extends StatelessWidget {
                   Tab(text: "Calls"),
                 ]),
           ),
+          body: Contacts(),
         ));
   }
 }
