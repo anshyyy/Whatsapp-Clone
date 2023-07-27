@@ -1,5 +1,7 @@
 import 'package:whatsapp/exports.dart';
 import 'package:whatsapp/features/contacts/presentation/contact_list.dart';
+import '../../features/web profile/web_profile.dart';
+import '../../features/web search bar/web_search_bar.dart';
 
 class WebScreen extends StatelessWidget {
   const WebScreen({super.key});
@@ -15,7 +17,9 @@ class WebScreen extends StatelessWidget {
             child: Column(
               children: [
                 //web profile bar
+                WebProfileBar(),
                 //web search bar
+                WebSearchBar(),
                 Contacts(),
               ],
             ),
