@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/core/constants.dart';
 import 'package:whatsapp/core/info.dart';
+import 'package:whatsapp/features/chatList/mobile/mobile_chat_screen.dart';
 
 class Contacts extends StatefulWidget {
   const Contacts({super.key});
@@ -23,7 +24,10 @@ class _ContactsState extends State<Contacts> {
             return Column(
               children: [
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => MobileChatScreen()));
+                  },
                   onLongPress: () {},
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 4.0),

@@ -1,5 +1,5 @@
 import 'package:whatsapp/exports.dart';
-import 'package:whatsapp/features/chatList/chat_list.dart';
+import 'package:whatsapp/features/chatList/web/chat_list.dart';
 import 'package:whatsapp/features/contacts/presentation/contact_list.dart';
 import 'package:whatsapp/features/web%20chat%20appBar/web_chat_appBar.dart';
 import '../../features/web profile/web_profile.dart';
