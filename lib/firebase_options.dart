@@ -67,6 +67,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1066901926124',
     projectId: 'whatsapp-clone-94eee',
     storageBucket: 'whatsapp-clone-94eee.appspot.com',
+    androidClientId: '1066901926124-curnv2bmoeqie1ll23tgs5uig4dagl61.apps.googleusercontent.com',
     iosClientId: '1066901926124-f7fiv4e9j4jq5l696u33do7rqnr8gqfr.apps.googleusercontent.com',
     iosBundleId: 'com.example.whatsapp',
   );
@@ -77,6 +78,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1066901926124',
     projectId: 'whatsapp-clone-94eee',
     storageBucket: 'whatsapp-clone-94eee.appspot.com',
+    androidClientId: '1066901926124-curnv2bmoeqie1ll23tgs5uig4dagl61.apps.googleusercontent.com',
     iosClientId: '1066901926124-hhbq2bigmjcpriifc4707bgp02vacsc4.apps.googleusercontent.com',
     iosBundleId: 'com.example.whatsapp.RunnerTests',
   );
