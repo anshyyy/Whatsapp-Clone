@@ -43,6 +43,7 @@ dependencies:
   flutter_riverpod: ^2.3.6
   page_transition: ^2.0.9
   country_picker: ^2.0.20
+  image_picker: ^1.0.1
 
 dev_dependencies:
   flutter_test:

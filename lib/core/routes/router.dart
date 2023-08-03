@@ -1,4 +1,5 @@
 import 'package:whatsapp/auth/presentation/otp_screen.dart';
+import 'package:whatsapp/auth/presentation/user_info.dart';
 import 'package:whatsapp/exports.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
@@ -13,6 +14,13 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       final verificationId = settings.arguments as String;
       return PageTransition(
         child: OtpScreen(verificationId: verificationId),
+        type: PageTransitionType.rightToLeft,
+        settings: settings,
+      );
+    case UserInfomation.routeName:
+      // final verificationId = settings.arguments as String;
+      return PageTransition(
+        child: const UserInfomation(),
         type: PageTransitionType.rightToLeft,
         settings: settings,
       );

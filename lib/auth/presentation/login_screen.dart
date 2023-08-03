@@ -74,9 +74,20 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   SizedBox(
                     width: size.width * 0.7,
                     child: TextField(
+                      keyboardType: TextInputType.number,
+                      textAlign: TextAlign.center,
                       controller: phoneController,
-                      decoration:
-                          const InputDecoration(hintText: "phone number"),
+                      decoration: const InputDecoration(
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: tabColor),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: tabColor),
+                          ),
+                          border: UnderlineInputBorder(
+                            borderSide: BorderSide(color: tabColor),
+                          ),
+                          hintText: "phone number"),
                     ),
                   )
                 ],
