@@ -1,3 +1,4 @@
+import 'package:whatsapp/auth/controller/auth_controller.dart';
 import 'package:whatsapp/exports.dart';
 
 class UserInfomation extends ConsumerStatefulWidget {
@@ -17,6 +18,15 @@ class _UserInfomationState extends ConsumerState<UserInfomation> {
     setState(() {
       print(image);
     });
+  }
+
+  void storeUserData() {
+    String name = nameController.text.trim();
+    if (name.isNotEmpty) {
+      ref
+          .read(authControllerProvider)
+          .saveUserDataToFireBase(context, name, image);
+    }
   }
 
   @override
@@ -71,9 +81,12 @@ class _UserInfomationState extends ConsumerState<UserInfomation> {
                     ),
                   ),
                 ),
-                IconButton(onPressed: () {}, icon: Icon(Icons.done))
               ],
-            )
+            ),
+            const SizedBox(height: 100),
+            SizedBox(
+                width: size.width * 0.45,
+                child: CustomButton(text: "Done", onPressed: storeUserData)),
           ],
         )),
       ),

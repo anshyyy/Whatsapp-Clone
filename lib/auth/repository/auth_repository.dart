@@ -1,5 +1,7 @@
 import 'package:whatsapp/auth/presentation/otp_screen.dart';
 import 'package:whatsapp/auth/presentation/user_info.dart';
+import 'package:whatsapp/core/common/repository/firebase_storage.dart';
+import 'package:whatsapp/core/model/user_model.dart';
 import 'package:whatsapp/exports.dart';
 import 'package:whatsapp/features/landing/presentation/landing_screen.dart';
 
@@ -43,6 +45,47 @@ class AuthRepository {
       Navigator.pushNamedAndRemoveUntil(
           context, UserInfomation.routeName, (route) => false);
     } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text(
+          "SomeThing Went Wrong!!",
+          style: TextStyle(color: blackColor),
+        ),
+        backgroundColor: tabColor,
+      ));
+    }
+  }
+
+  void saveUserDataToFirebase({
+    required String name,
+    required File? profileImage,
+    required ProviderRef ref,
+    required BuildContext context,
+  }) async {
+    try {
+      String uid = auth.currentUser!.uid;
+      String photoUrl =
+          "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png";
+      if (profileImage != null) {
+        photoUrl = await ref
+            .read(firebaseStorageProvider)
+            .storeFileToFirebase("profile-pic/$uid", profileImage);
+      }
+      print(auth.currentUser);
+      var user = UserModel(
+          name: name,
+          uid: uid,
+          profilePic: photoUrl,
+          isOnline: true,
+          phoneNumber: auth.currentUser!.uid,
+          groupId: []);
+
+      await firestore.collection("users").doc(uid).set(user.toMap());
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const MobileScreen()),
+          (route) => false);
+    } catch (e) {
+      print(e);
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text(
           "SomeThing Went Wrong!!",
