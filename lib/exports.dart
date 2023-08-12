@@ -3,6 +3,7 @@ export 'package:whatsapp/core/screens/mobile_screen_layout.dart';
 export 'package:whatsapp/core/screens/web_screen_layout.dart';
 export 'package:whatsapp/core/constants.dart';
 export 'dart:io';
+export 'package:firebase_app_check/firebase_app_check.dart';
 export 'dart:convert';
 export 'package:firebase_storage/firebase_storage.dart';
 export 'package:whatsapp/responsive/responsive_layout.dart';

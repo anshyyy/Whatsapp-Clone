@@ -3,7 +3,6 @@ import 'package:whatsapp/auth/presentation/user_info.dart';
 import 'package:whatsapp/core/common/repository/firebase_storage.dart';
 import 'package:whatsapp/core/model/user_model.dart';
 import 'package:whatsapp/exports.dart';
-import 'package:whatsapp/features/landing/presentation/landing_screen.dart';
 
 final authRepositoryProvider = Provider((ref) => AuthRepository(
     auth: FirebaseAuth.instance, firestore: FirebaseFirestore.instance));
@@ -70,16 +69,23 @@ class AuthRepository {
             .read(firebaseStorageProvider)
             .storeFileToFirebase("profile-pic/$uid", profileImage);
       }
-      print(auth.currentUser);
+      print(photoUrl);
+      print(auth.currentUser!.uid);
+
       var user = UserModel(
           name: name,
           uid: uid,
           profilePic: photoUrl,
           isOnline: true,
-          phoneNumber: auth.currentUser!.uid,
+          phoneNumber: auth.currentUser!.phoneNumber!,
           groupId: []);
-
-      await firestore.collection("users").doc(uid).set(user.toMap());
+      print(user.toMap());
+      await firestore.collection("users").doc(uid).set(user.toMap()).then(
+        (value) {
+          print("successfully created a user ");
+        },
+      );
+      print("hello this is after saving collection");
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (context) => const MobileScreen()),

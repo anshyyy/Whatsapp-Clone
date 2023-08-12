@@ -8,6 +8,11 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await FirebaseAppCheck.instance.activate(
+    webRecaptchaSiteKey: 'recaptcha-v3-site-key',
+    androidProvider: AndroidProvider.debug,
+    appleProvider: AppleProvider.appAttest,
+  );
   await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
   runApp(const ProviderScope(child: MyApp()));
 }
