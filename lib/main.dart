@@ -1,6 +1,8 @@
+import 'package:whatsapp/auth/controller/auth_controller.dart';
 import 'package:whatsapp/core/routes/router.dart';
 import 'package:whatsapp/features/landing/presentation/landing_screen.dart';
 
+import 'core/common/widgets/loader.dart';
 import 'exports.dart';
 
 Future<void> main() async {
@@ -18,11 +20,11 @@ Future<void> main() async {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark().copyWith(
@@ -32,9 +34,15 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         onGenerateRoute: (settings) => generateRoute(settings),
-        home: ResponsiveLayout(
-          mobileScreenLayout: LandingScreen(),
-          webScreenLayout: WebScreen(),
-        ));
+        home: ref.watch(userDataAuthProvider).when(
+            data: (user) {
+              return (user == null)
+                  ? const LandingScreen()
+                  : const MobileScreen();
+            },
+            error: ((err, stackTrace) {
+              return ErrorScreen(error: err.toString());
+            }),
+            loading: () => const Loader()));
   }
 }

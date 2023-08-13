@@ -1,8 +1,15 @@
 import 'package:whatsapp/exports.dart';
 
+import '../../core/model/user_model.dart';
+
 final authControllerProvider = Provider((ref) {
   return AuthController(
       ref: ref, authRepository: ref.read(authRepositoryProvider));
+});
+
+final userDataAuthProvider = FutureProvider((ref) {
+  final authController = ref.watch(authControllerProvider);
+  return authController.getUserData();
 });
 
 class AuthController {
@@ -10,6 +17,11 @@ class AuthController {
   final ProviderRef ref;
 
   AuthController({required this.ref, required this.authRepository});
+
+  Future<UserModel?> getUserData() async {
+    UserModel? user = await authRepository.getCurrentUserData();
+    return user;
+  }
 
   void signInWithPhone(BuildContext context, String phoneNumber) {
     authRepository.signInWithPhone(context, phoneNumber);
