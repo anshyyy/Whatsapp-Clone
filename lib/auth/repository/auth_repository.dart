@@ -79,12 +79,8 @@ class AuthRepository {
           isOnline: true,
           phoneNumber: auth.currentUser!.phoneNumber!,
           groupId: []);
-      print(user.toMap());
-      await firestore.collection("users").doc(uid).set(user.toMap()).then(
-        (value) {
-          print("successfully created a user ");
-        },
-      );
+
+      await firestore.collection("users").doc(uid).set(user.toMap());
       print("hello this is after saving collection");
       Navigator.pushAndRemoveUntil(
           context,

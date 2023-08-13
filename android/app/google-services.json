@@ -1,57 +1,34 @@
 {
   "project_info": {
-    "project_number": "1066901926124",
-    "project_id": "whatsapp-clone-94eee",
-    "storage_bucket": "whatsapp-clone-94eee.appspot.com"
+    "project_number": "418691818841",
+    "project_id": "whatsapp-bcbcc",
+    "storage_bucket": "whatsapp-bcbcc.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1066901926124:android:06ab84ca0ca64b3e7e35c9",
+        "mobilesdk_app_id": "1:418691818841:android:d4c857fbc60d2b93de5848",
         "android_client_info": {
           "package_name": "com.example.whatsapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1066901926124-curnv2bmoeqie1ll23tgs5uig4dagl61.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.whatsapp",
-            "certificate_hash": "2320d7f76b8b2aa58092ade6a61fcc9e057992f6"
-          }
-        },
-        {
-          "client_id": "1066901926124-tcfrq89bgl2roa58gk1nhk7fs2k0amos.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.whatsapp",
-            "certificate_hash": "d769f87692e9d9c780ff05e6ee843aefa9075d1c"
-          }
-        },
-        {
-          "client_id": "1066901926124-ldm2tc9tu15a39o7ucv80qbi1djhm69s.apps.googleusercontent.com",
+          "client_id": "418691818841-88hgts63du8454jjqhvhonpooj6dppt4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBWD90IqZNQ6xPSNY3albLRYXXiFb2UsmE"
+          "current_key": "AIzaSyDa7sRj7PTx-0-1u4QOUNPNJQ3ghZijrVI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1066901926124-ldm2tc9tu15a39o7ucv80qbi1djhm69s.apps.googleusercontent.com",
+              "client_id": "418691818841-88hgts63du8454jjqhvhonpooj6dppt4.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "1066901926124-f7fiv4e9j4jq5l696u33do7rqnr8gqfr.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.whatsapp"
-              }
             }
           ]
         }

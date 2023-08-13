@@ -13,6 +13,7 @@ Future<void> main() async {
     androidProvider: AndroidProvider.debug,
     appleProvider: AppleProvider.appAttest,
   );
+  FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
   await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
   runApp(const ProviderScope(child: MyApp()));
 }
