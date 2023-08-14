@@ -1,6 +1,7 @@
 import 'package:whatsapp/auth/presentation/otp_screen.dart';
 import 'package:whatsapp/auth/presentation/user_info.dart';
 import 'package:whatsapp/exports.dart';
+import 'package:whatsapp/features/select_contacts/presentation/selectContact_screen.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -24,6 +25,11 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         type: PageTransitionType.rightToLeft,
         settings: settings,
       );
+    case SelectContactsScreen.routeName:
+      return PageTransition(
+          child: const SelectContactsScreen(),
+          type: PageTransitionType.rightToLeft,
+          settings: settings);
     default:
       return PageTransition(
         child: Scaffold(

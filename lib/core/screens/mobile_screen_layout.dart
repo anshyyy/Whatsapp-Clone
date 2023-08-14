@@ -1,5 +1,6 @@
 import 'package:whatsapp/exports.dart';
 import 'package:whatsapp/features/contacts/presentation/contact_list.dart';
+import 'package:whatsapp/features/select_contacts/presentation/selectContact_screen.dart';
 
 class MobileScreen extends StatelessWidget {
   const MobileScreen({super.key});
@@ -36,7 +37,12 @@ class MobileScreen extends StatelessWidget {
           body: Contacts(),
           floatingActionButton: FloatingActionButton(
             shape: CircleBorder(),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(
+                context,
+                SelectContactsScreen.routeName,
+              );
+            },
             backgroundColor: tabColor,
             child: const Icon(
               Icons.comment,
