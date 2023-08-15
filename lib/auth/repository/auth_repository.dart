@@ -82,8 +82,8 @@ class AuthRepository {
             .read(firebaseStorageProvider)
             .storeFileToFirebase("profile-pic/$uid", profileImage);
       }
-      print(photoUrl);
-      print(auth.currentUser!.uid);
+      // print(photoUrl);
+      // print(auth.currentUser!.uid);
 
       var user = UserModel(
           name: name,
@@ -100,7 +100,6 @@ class AuthRepository {
           MaterialPageRoute(builder: (context) => const MobileScreen()),
           (route) => false);
     } catch (e) {
-      print(e);
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text(
           "SomeThing Went Wrong!!",
@@ -109,5 +108,9 @@ class AuthRepository {
         backgroundColor: tabColor,
       ));
     }
+  }
+
+  userData(String userId) {
+    //return firestore.collection("users").doc(userId).snapshots()
   }
 }

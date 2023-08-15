@@ -26,7 +26,8 @@ class _ContactsState extends State<Contacts> {
                 InkWell(
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => MobileChatScreen()));
+                        builder: (context) =>
+                            MobileChatScreen(name: "", uid: "")));
                   },
                   onLongPress: () {},
                   child: Padding(

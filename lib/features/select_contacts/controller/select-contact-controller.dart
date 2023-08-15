@@ -8,7 +8,11 @@ final getContactProvider = FutureProvider((ref) async {
   return selectContactRepository.getContacts();
 });
 
-//final selectContact
+final selectContactProvider = Provider((ref) {
+  final selectContactRepository = ref.watch(selectContactRepositoryProvider);
+  return SelectContactController(
+      ref: ref, selectContactRepository: selectContactRepository);
+});
 
 class SelectContactController {
   final ProviderRef ref;
@@ -18,5 +22,7 @@ class SelectContactController {
     required this.selectContactRepository,
   });
 
-  void selectContact(Contact selectContact, BuildContext context) async {}
+  void selectContact(Contact selectedContact, BuildContext context) async {
+    selectContactRepository.selectContact(selectedContact, context);
+  }
 }

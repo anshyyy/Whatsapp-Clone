@@ -5,7 +5,11 @@ import '../../../core/info.dart';
 import '../web/chat_list.dart';
 
 class MobileChatScreen extends StatelessWidget {
-  const MobileChatScreen({Key? key}) : super(key: key);
+  static const String routeName = "/mobile-chat-screen";
+  final String name;
+  final String uid;
+  const MobileChatScreen({Key? key, required this.name, required this.uid})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +18,7 @@ class MobileChatScreen extends StatelessWidget {
         automaticallyImplyLeading: false,
         backgroundColor: appBarColor,
         title: Text(
-          info[0]['name'].toString(),
+          name,
         ),
         centerTitle: false,
         actions: [

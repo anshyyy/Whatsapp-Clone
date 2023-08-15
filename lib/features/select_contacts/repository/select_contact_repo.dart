@@ -1,5 +1,6 @@
 import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:whatsapp/exports.dart';
+import 'package:whatsapp/features/chatList/mobile/mobile_chat_screen.dart';
 
 import '../../../core/model/user_model.dart';
 
@@ -31,6 +32,22 @@ class SelectContactRepository {
       bool isFound = false;
       for (var document in userCollection.docs) {
         var userData = UserModel.fromMap(document.data());
+        print(userData.phoneNumber);
+        String selectNum = selectedContact.phones[0].number.replaceAll(" ", "");
+        print(selectNum);
+        if (selectNum == userData.phoneNumber) {
+          isFound = true;
+          Navigator.pushNamed(context, MobileChatScreen.routeName, arguments: {
+            'name': userData.name,
+            'uid': userData.uid,
+          });
+        }
+      }
+      if (!isFound) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text("This contact is not on Whatsapp!"),
+          backgroundColor: tabColor,
+        ));
       }
     } catch (e) {
       showSnackBar(context: context, content: e.toString());
