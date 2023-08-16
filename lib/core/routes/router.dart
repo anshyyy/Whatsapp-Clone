@@ -1,7 +1,7 @@
 import 'package:whatsapp/auth/presentation/otp_screen.dart';
 import 'package:whatsapp/auth/presentation/user_info.dart';
 import 'package:whatsapp/exports.dart';
-import 'package:whatsapp/features/chatList/mobile/mobile_chat_screen.dart';
+import 'package:whatsapp/features/chat/presentation/mobile_chat_screen.dart';
 import 'package:whatsapp/features/select_contacts/presentation/selectContact_screen.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {

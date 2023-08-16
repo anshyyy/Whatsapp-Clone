@@ -1,6 +1,6 @@
 import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:whatsapp/exports.dart';
-import 'package:whatsapp/features/chatList/mobile/mobile_chat_screen.dart';
+import 'package:whatsapp/features/chat/presentation/mobile_chat_screen.dart';
 
 import '../../../core/model/user_model.dart';
 
