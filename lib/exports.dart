@@ -8,6 +8,7 @@ export 'dart:convert';
 export 'package:firebase_storage/firebase_storage.dart';
 export 'package:whatsapp/responsive/responsive_layout.dart';
 export 'package:firebase_core/firebase_core.dart';
+export 'package:whatsapp/core/model/user_model.dart';
 export 'firebase_options.dart';
 export 'package:whatsapp/core/common/utils/utils.dart';
 export 'package:riverpod/riverpod.dart';
