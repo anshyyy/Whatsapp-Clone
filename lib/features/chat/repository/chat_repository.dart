@@ -1,5 +1,6 @@
 import 'package:uuid/uuid.dart';
 import 'package:whatsapp/core/common/enums/message_enum.dart';
+import 'package:whatsapp/core/info.dart';
 import 'package:whatsapp/core/model/chat_contact.dart';
 import 'package:whatsapp/core/model/message.dart';
 import 'package:whatsapp/exports.dart';
@@ -14,6 +15,32 @@ class ChatRepository {
     required this.firestore,
     required this.auth,
   });
+
+  Stream<List<ChatContact>> getChatContacts() {
+    return firestore
+        .collection('users')
+        .doc(auth.currentUser!.uid)
+        .collection('chats')
+        .snapshots()
+        .asyncMap((event) async {
+      List<ChatContact> contacts = [];
+      for (var document in event.docs) {
+        var chatContact = ChatContact.fromMap(document.data());
+        var userData = await firestore
+            .collection('users')
+            .doc(chatContact.contactId)
+            .get();
+        var user = UserModel.fromMap(userData.data()!);
+        contacts.add(ChatContact(
+            name: user.name,
+            timeSent: chatContact.timeSent,
+            profilePic: user.profilePic,
+            contactId: chatContact.contactId,
+            lastMessage: chatContact.lastMessage));
+      }
+      return contacts;
+    });
+  }
 
   void _saveDataToContactsSubCollection(
       UserModel senderUserData,
