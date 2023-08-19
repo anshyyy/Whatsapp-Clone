@@ -48,7 +48,7 @@ class SelectContactsScreen extends ConsumerWidget {
                 );
               }),
           error: (err, trace) {
-            ErrorScreen(error: err.toString());
+            return ErrorScreen(error: err.toString());
           },
           loading: (() => const Loader())),
     );

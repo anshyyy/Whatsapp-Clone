@@ -1,6 +1,5 @@
 import 'package:uuid/uuid.dart';
 import 'package:whatsapp/core/common/enums/message_enum.dart';
-import 'package:whatsapp/core/info.dart';
 import 'package:whatsapp/core/model/chat_contact.dart';
 import 'package:whatsapp/core/model/message.dart';
 import 'package:whatsapp/exports.dart';
@@ -25,6 +24,7 @@ class ChatRepository {
         .asyncMap((event) async {
       List<ChatContact> contacts = [];
       for (var document in event.docs) {
+        print("here is the docs ${document.data()}");
         var chatContact = ChatContact.fromMap(document.data());
         var userData = await firestore
             .collection('users')

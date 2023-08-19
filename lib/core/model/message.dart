@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:whatsapp/core/common/enums/message_enum.dart';
+import 'package:whatsapp/exports.dart';
 
 class Message {
   final String senderId;
@@ -38,7 +39,7 @@ class Message {
       recieverId: map['recieverId'] as String,
       text: map['text'] as String,
       type: (map['type'] as String).toEnum(),
-      timeSent: DateTime.fromMillisecondsSinceEpoch(map['timeSent'] as int),
+      timeSent: (map['timeSent'] as Timestamp).toDate(),
       messageId: map['messageId'] as String,
       isSeen: map['isSeen'] as bool,
     );

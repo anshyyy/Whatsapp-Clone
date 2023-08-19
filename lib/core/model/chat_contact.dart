@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:whatsapp/exports.dart';
+
 class ChatContact {
   final String name;
   final DateTime timeSent;
@@ -27,7 +29,7 @@ class ChatContact {
   factory ChatContact.fromMap(Map<String, dynamic> map) {
     return ChatContact(
       name: map['name'] as String,
-      timeSent: map['timeSent'] as DateTime,
+      timeSent: (map['timeSent'] as Timestamp).toDate(),
       profilePic: map['profilePic'] as String,
       contactId: map['contactId'] as String,
       lastMessage: map['lastMessage'] as String,

@@ -17,7 +17,9 @@ class ChatController {
   });
 
   Stream<List<ChatContact>> chatContacts() {
-    return chatRepository.getChatContacts();
+    final Stream<List<ChatContact>> contacts = chatRepository.getChatContacts();
+    print("contact data $contacts");
+    return contacts;
   }
 
   void sendTextMessage(

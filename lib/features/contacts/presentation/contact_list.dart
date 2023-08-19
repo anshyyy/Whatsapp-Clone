@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
+import 'package:whatsapp/core/common/widgets/loader.dart';
 import 'package:whatsapp/exports.dart';
-import 'package:whatsapp/core/info.dart';
 import 'package:whatsapp/core/model/chat_contact.dart';
 import 'package:whatsapp/features/chat/controller/chat_controller.dart';
 import 'package:whatsapp/features/chat/presentation/mobile_chat_screen.dart';
@@ -22,25 +22,36 @@ class _ContactsState extends ConsumerState<Contacts> {
       child: StreamBuilder<List<ChatContact>>(
           stream: ref.watch(chatControllerProvider).chatContacts(),
           builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Loader();
+            }
+            if (snapshot.hasError) {
+              print(snapshot.error);
+              return ErrorScreen(error: snapshot.error.toString());
+            }
+            print("stream data  ${snapshot.data!.length}");
             return ListView.builder(
                 shrinkWrap: true,
-                itemCount: snapshot.data!.length,
+                itemCount: snapshot.data?.length ?? 0,
                 itemBuilder: (context, index) {
-                  var chatContactData = snapshot.data![index];
+                  var chatContactData = snapshot.data?[index];
+                  print("chat contacts $chatContactData");
                   return Column(
                     children: [
                       InkWell(
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) =>
-                                  const MobileChatScreen(name: "", uid: "")));
+                          Navigator.pushNamed(
+                              context, MobileChatScreen.routeName, arguments: {
+                            'name': chatContactData?.name,
+                            "uid": chatContactData?.contactId
+                          });
                         },
                         onLongPress: () {},
                         child: Padding(
                           padding: const EdgeInsets.only(bottom: 4.0),
                           child: ListTile(
                             title: Text(
-                              chatContactData.name,
+                              chatContactData!.name,
                               style: const TextStyle(fontSize: 18),
                             ),
                             subtitle: Padding(
