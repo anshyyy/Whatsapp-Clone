@@ -29,21 +29,21 @@ class _ContactsState extends ConsumerState<Contacts> {
               print(snapshot.error);
               return ErrorScreen(error: snapshot.error.toString());
             }
-            print("stream data  ${snapshot.data!.length}");
+            // print("stream data  ${snapshot.data!.length}");
             return ListView.builder(
                 shrinkWrap: true,
                 itemCount: snapshot.data?.length ?? 0,
                 itemBuilder: (context, index) {
                   var chatContactData = snapshot.data?[index];
-                  print("chat contacts $chatContactData");
+                  // print("chat contacts $chatContactData");
                   return Column(
                     children: [
                       InkWell(
                         onTap: () {
                           Navigator.pushNamed(
                               context, MobileChatScreen.routeName, arguments: {
-                            'name': chatContactData?.name,
-                            "uid": chatContactData?.contactId
+                            'name': chatContactData.name,
+                            "uid": chatContactData.contactId
                           });
                         },
                         onLongPress: () {},
