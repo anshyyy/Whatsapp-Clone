@@ -29,6 +29,13 @@
             {
               "client_id": "418691818841-88hgts63du8454jjqhvhonpooj6dppt4.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "418691818841-srpdqrjj8hm84m5kt8ca52fjachj994s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.whatsapp"
+              }
             }
           ]
         }
