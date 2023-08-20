@@ -4,7 +4,7 @@ import 'package:whatsapp/core/common/widgets/loader.dart';
 import 'package:whatsapp/core/model/user_model.dart';
 import 'package:whatsapp/exports.dart';
 import 'package:whatsapp/features/chat/widget/bottom_chat_field.dart';
-import '../../chatList/web/chat_list.dart';
+import '../widget/chat_list.dart';
 
 class MobileChatScreen extends ConsumerWidget {
   static const String routeName = "/mobile-chat-screen";
@@ -58,8 +58,10 @@ class MobileChatScreen extends ConsumerWidget {
       ),
       body: Column(
         children: [
-          const Expanded(
-            child: ChatList(),
+          Expanded(
+            child: ChatList(
+              recieverUserID: uid,
+            ),
           ),
           BottomChatField(
             recieverUserId: uid,

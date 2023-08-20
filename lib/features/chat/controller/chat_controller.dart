@@ -1,5 +1,6 @@
 import 'package:whatsapp/auth/controller/auth_controller.dart';
 import 'package:whatsapp/core/model/chat_contact.dart';
+import 'package:whatsapp/core/model/message.dart';
 import 'package:whatsapp/exports.dart';
 import 'package:whatsapp/features/chat/repository/chat_repository.dart';
 
@@ -20,6 +21,10 @@ class ChatController {
     final Stream<List<ChatContact>> contacts = chatRepository.getChatContacts();
     print("contact data $contacts");
     return contacts;
+  }
+
+  Stream<List<Message>> getChatStream(String recieverUserID) {
+    return chatRepository.getChatStream(recieverUserID);
   }
 
   void sendTextMessage(

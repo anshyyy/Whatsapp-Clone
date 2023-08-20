@@ -26,7 +26,7 @@ class _ContactsState extends ConsumerState<Contacts> {
               return const Loader();
             }
             if (snapshot.hasError) {
-              print(snapshot.error);
+              // print(snapshot.error);
               return ErrorScreen(error: snapshot.error.toString());
             }
             // print("stream data  ${snapshot.data!.length}");

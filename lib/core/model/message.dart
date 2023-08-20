@@ -34,12 +34,14 @@ class Message {
   }
 
   factory Message.fromMap(Map<String, dynamic> map) {
+    final timeStamp = DateTime.fromMillisecondsSinceEpoch(map['timeSent']);
+    print("hellllllllllllllllllooooooooooooooo $timeStamp");
     return Message(
       senderId: map['senderId'] as String,
       recieverId: map['recieverId'] as String,
       text: map['text'] as String,
       type: (map['type'] as String).toEnum(),
-      timeSent: (map['timeSent'] as Timestamp).toDate(),
+      timeSent: timeStamp,
       messageId: map['messageId'] as String,
       isSeen: map['isSeen'] as bool,
     );
