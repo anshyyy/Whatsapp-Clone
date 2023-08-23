@@ -1,3 +1,4 @@
+import 'package:whatsapp/core/common/enums/message_enum.dart';
 import 'package:whatsapp/exports.dart';
 import 'package:whatsapp/features/chat/controller/chat_controller.dart';
 
@@ -13,6 +14,19 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
   TextEditingController message = TextEditingController();
 
   bool isShowSendButton = false;
+
+  void sendFileMessage(File file, MessageEnum messageEnum) {
+    ref
+        .read(chatControllerProvider)
+        .sendFileMessage(context, file, widget.recieverUserId, messageEnum);
+  }
+
+  void selectImage() async {
+    File? image = await pickImageFromGallery(context);
+    if (image != null) {
+      sendFileMessage(image, MessageEnum.IMAGE);
+    }
+  }
 
   void sendTextMessage() {
     if (isShowSendButton) {
@@ -84,7 +98,7 @@ class _BottomChatFieldState extends ConsumerState<BottomChatField> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       IconButton(
-                        onPressed: () {},
+                        onPressed: selectImage,
                         icon: const Icon(
                           Icons.camera_alt,
                           color: Colors.grey,

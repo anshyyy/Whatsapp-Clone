@@ -1,5 +1,6 @@
 import 'package:uuid/uuid.dart';
 import 'package:whatsapp/core/common/enums/message_enum.dart';
+import 'package:whatsapp/core/common/repository/firebase_storage.dart';
 import 'package:whatsapp/core/model/chat_contact.dart';
 import 'package:whatsapp/core/model/message.dart';
 import 'package:whatsapp/exports.dart';
@@ -151,6 +152,60 @@ class ChatRepository {
         username: senderUser.name,
         recieverUsername: recieverUserData.name,
       );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(e.toString()),
+        backgroundColor: tabColor,
+      ));
+    }
+  }
+
+  void sendFileMessage(
+      {required BuildContext context,
+      required File file,
+      required String recieverID,
+      required UserModel sendUserData,
+      required ProviderRef ref,
+      required MessageEnum messageEnum}) async {
+    try {
+      var timeSent = DateTime.now();
+      var messageId = const Uuid().v1();
+      String imageUrl = await ref.read(firebaseStorageProvider).storeFileToFirebase(
+          "chat/${messageEnum.type}/${sendUserData.uid}/$recieverID/$messageId",
+          file);
+      UserModel recieverUserData;
+      var userDataMap =
+          await firestore.collection('users').doc(recieverID).get();
+      recieverUserData = UserModel.fromMap(userDataMap.data()!);
+
+      String contactMsg;
+      switch (messageEnum) {
+        case MessageEnum.IMAGE:
+          contactMsg = '📷 Photo';
+          break;
+        case MessageEnum.VIDEO:
+          contactMsg = '📽️ Video';
+          break;
+        case MessageEnum.AUDIO:
+          contactMsg = '🎵 Audio';
+          break;
+        case MessageEnum.GIF:
+          contactMsg = 'GIF';
+          break;
+        default:
+          contactMsg = 'GIF';
+      }
+
+      _saveDataToContactsSubCollection(
+          sendUserData, recieverUserData, contactMsg, timeSent, recieverID);
+      _saveMessageToMessageSubCollection(
+          recieverUserID: recieverID,
+          text: imageUrl,
+          timeSent: timeSent,
+          messageId: messageId,
+          username: sendUserData.name,
+          recieverUsername: recieverUserData.name,
+          messageType: messageEnum);
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text(e.toString()),

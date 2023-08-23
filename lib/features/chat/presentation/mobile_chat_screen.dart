@@ -17,7 +17,6 @@ class MobileChatScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         backgroundColor: appBarColor,
         title: StreamBuilder<UserModel>(
             stream: ref.read(authControllerProvider).userDataById(uid),

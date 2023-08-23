@@ -1,4 +1,5 @@
 import 'package:whatsapp/auth/controller/auth_controller.dart';
+import 'package:whatsapp/core/common/enums/message_enum.dart';
 import 'package:whatsapp/core/model/chat_contact.dart';
 import 'package:whatsapp/core/model/message.dart';
 import 'package:whatsapp/exports.dart';
@@ -35,5 +36,17 @@ class ChatController {
             text: text,
             recieverUserId: recieverUserId,
             senderUser: value!));
+  }
+
+  void sendFileMessage(BuildContext context, File file, String recieverUserId,
+      MessageEnum messageEnum) {
+    ref.read(userDataAuthProvider).whenData((value) =>
+        chatRepository.sendFileMessage(
+            context: context,
+            file: file,
+            recieverID: recieverUserId,
+            sendUserData: value!,
+            messageEnum: messageEnum,
+            ref: ref));
   }
 }
