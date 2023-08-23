@@ -16,7 +16,7 @@ Future<void> main() async {
     appleProvider: AppleProvider.appAttest,
   );
 
-  const bool USE_EMULATOR = false;
+  const bool USE_EMULATOR = true;
   if (USE_EMULATOR) {
     FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
     await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);

@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:whatsapp/core/common/widgets/loader.dart';
 import 'package:whatsapp/core/model/message.dart';
 import 'package:whatsapp/exports.dart';
@@ -33,7 +31,7 @@ class ChatList extends ConsumerWidget {
               final messageData = snapshot.data![index];
               final timeSent = messageData.timeSent;
               print("time is here boi $timeSent");
-              if (messages[index]['isMe'] !=
+              if (messages[index]['isMe'] ==
                   FirebaseAuth.instance.currentUser!.uid) {
                 return MyMessageCard(
                   message: messageData.text,
