@@ -3,8 +3,8 @@ import 'package:whatsapp/core/common/widgets/loader.dart';
 import 'package:whatsapp/core/model/message.dart';
 import 'package:whatsapp/exports.dart';
 import 'package:whatsapp/features/chat/controller/chat_controller.dart';
-import 'package:whatsapp/features/chatList/widgets/my_message.dart';
-import 'package:whatsapp/features/chatList/widgets/sender_message.dart';
+import 'package:whatsapp/features/chat/widget/my_message.dart';
+import 'package:whatsapp/features/chat/widget/sender_message.dart';
 
 import '../../../core/info.dart';
 
@@ -57,6 +57,7 @@ class _ChatListState extends ConsumerState<ChatList> {
                 return MyMessageCard(
                   message: messageData.text,
                   date: '${timeSent.hour}:${timeSent.minute}',
+                  type: messageData.type,
                 );
               }
               return SenderMessageCard(
