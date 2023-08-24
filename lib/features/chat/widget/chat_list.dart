@@ -61,9 +61,9 @@ class _ChatListState extends ConsumerState<ChatList> {
                 );
               }
               return SenderMessageCard(
-                message: messageData.text,
-                date: '${timeSent.hour}:${timeSent.minute}',
-              );
+                  message: messageData.text,
+                  date: '${timeSent.hour}:${timeSent.minute}',
+                  type: messageData.type);
             },
           );
         });
